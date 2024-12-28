@@ -1,0 +1,40 @@
+@import "@/style/global.scss";
+@import "@/style/global-transition.scss";
+@import "@/style/global-style.scss";
+@import "@/style/global-scrollbar.scss";
+@import "@/style/loading-page.scss";
+@import "@/style/card-animation.scss";
+@import "@/style/media.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html {
+  font-size: 14px;
+}
+
+#app {
+  overflow: hidden;
+}
+
+// 设置全局颜色-关联黑暗模式
+// 全局取一级容器背景色$color-bg-2，main窗口取边框色浅色$color-border-1
+body {
+  background: $color-bg-2; // body背景颜色
+  color: $color-text-1; // 整体文字的颜色
+}
+
+// 设置nprogress进度条样式
+#nprogress .bar {
+  background: $color-primary !important;
+}
