@@ -34,6 +34,9 @@ const MenuNode = (list: any) => {
 
   breadcrumb.value = list;
   const jsonData = list[list.length - 1]
+  if (list.length > 1) {
+    jsonData.parentId = list[list.length - 2].key;
+  }
   TableFormRef.value &&
   TableFormRef.value.getMenuData(jsonData);
 
@@ -42,6 +45,7 @@ const MenuNode = (list: any) => {
 const saveMenu = () => {
   TableFormRef.value &&
   TableFormRef.value.sendMenuData();
+  
 };
 
 </script>

@@ -114,6 +114,7 @@
 <script setup lang="ts">
 
 // 定义form 类型
+import { Message } from "@arco-design/web-vue";
 import {From} from "./config.ts";
 
 const from = ref<From>({
@@ -189,7 +190,14 @@ import MenuApi from "@/api/system/menu.ts"
 const sendMenuData = async () => {
   // 假设这里有一些逻辑来获取数据
   console.log("sendList", from.value);
-  MenuApi.upMenuListAPI(from.value)
+  MenuApi.upMenuListAPI(from.value).then(res => {
+    console.log("res", res);
+    if (res.code == 200) {
+      Message.success("保存成功");
+    } else {
+      Message.error("保存失败");
+    }
+  })
 }
 
 

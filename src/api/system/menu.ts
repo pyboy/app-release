@@ -18,12 +18,19 @@ export default {
     },
 
     // 更新菜单列表
-    upMenuListAPI(data) {
+    upMenuListAPI(data = {}) {
         return axios({
             url: "http://127.0.0.1:8080/mock/menu/list/",
             method: "post",
             data
         });
     },
-
+    // 删除菜单
+    delMenuAPI(data = {}) {
+        return axios({
+            url: "http://127.0.0.1:8080/mock/menu/list/",
+            method: "delete",
+            data
+        });
+    },
 }

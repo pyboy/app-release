@@ -49,6 +49,7 @@ import { findParentsTailRecursive } from "@/utils";
 
 // 加载后端访问功能
 import MenuApi from "@/api/system/menu.ts"
+import { Message } from "@arco-design/web-vue";
 
 const emit = defineEmits(["MenuNode"]);
 
@@ -102,6 +103,15 @@ const removeNode = (node: SourceTree) => {
   console.log('Removing node:', node);
   // 删除 treeData.value 中key 为 node.key 的节点
   removeTreeByKey(treeData.value, node.key)
+  // 删除后端数据
+  MenuApi.delMenuAPI(node).then((res) => {
+    if (res.code == 200) {
+      Message.success('删除成功');
+    } else {
+      Message.error('删除失败');
+    }
+
+  })
 };
 
 const removeTreeByKey = (tree: SourceTree[], key: number) => {
